@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <style>
+  div.a {
+   text-align: center;
+  }</style>
+
+  <title>TinyApp</title>
+</head>
+<body style="font-size:20px; padding:50px;">
+  <h1>Tiny App</h1>
+  <p>
+    <% if(user){ %>
+    <a href='/urls/new'>Create New TinyURL</a>
+    <h3>Logged in as:
+      <%= user.email %>
+    </h3>
+    <form method="POST" action="/logout">
+      <button type="submit" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-off"></span>
+        Logout </button>
+    </form>
+    <!-- Display the welcome message ends here. -->
+
+    <h3>Urls:</h3>
+    <!-- Displaying all the urls with shortURL and LongURL-->
+    <ul>
+      <% for(var key in urllist){ %>
+      <li>
+        <div>
+          <strong>
+            <%= key %></strong> :
+          <%= urllist[key].longURL %>
+          <a href="/urls/<%= key %>"><span class="glyphicon glyphicon-pencil"></span></a>
+          <a href="/u/<%= key %>">
+            <p>Copy me for short URL! </p>
+          </a>
+          <form method="POST" action="/urls/<%= key %>/delete">
+            <button type="submit" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+          </form>
+          <hr>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+
+    <% } else { %>
+    <a href="/login">Login </a> | <a href="register"> Register </a>
+    <!--Login Form -->
+    <form method="POST" action="/login">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username"> </input>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password"> </input>
+      <button type="submit">Login</button>
+    </form>
+    <!--Register Form -->
+    <form method="POST" action="/register">
+      <label for="email">Username:</label>
+      <input type="text" name="email" id="email"> </input>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password"> </input>
+      <button type="submit">Register</button>
+    </form>
+    <% } %>
+  </p>
+</body>
+</html>

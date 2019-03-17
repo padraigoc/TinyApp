@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+
+  <title>New URL - TinyApp Example</title>
+</head>
+
+<body style="font-size:20px; padding:50px;">
+
+  <h1>Tiny App</h1>
+
+  <a href="/urls">Go back </a>
+
+  <br>
+  <h4>Create TinyURL</h4>
+  <h5> Please ensure it's a full url, including http:// or https://</h5>
+  <form class="form-inline" action="/urls" method="POST">
+    <div class="form-group mb-2">
+      <label for="longURL">Enter a URL:</label>
+      <input class="form-control" type="text" name="longURL" placeholder="http://" style="width: 300px; margin: 1em">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</body>
+
+</html>
